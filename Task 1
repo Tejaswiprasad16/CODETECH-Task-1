@@ -1,0 +1,30 @@
+
+function convertTemperature() {
+    const inputTemp = document.getElementById('temperature-input').value;
+    const inputUnit = document.getElementById('input-unit').value;
+    const output = document.getElementById('output');
+    
+    // Validate input
+    if (isNaN(inputTemp) || inputTemp === '') {
+        output.textContent = 'Please enter a valid number for temperature.';
+        return;
+    }
+
+    const temperature = parseFloat(inputTemp);
+    let convertedTemp;
+
+    switch (inputUnit) {
+        case 'celsius':
+            convertedTemp = `Fahrenheit: ${(temperature * 9/5) + 32} °F | Kelvin: ${temperature + 273.15} K`;
+            break;
+        case 'fahrenheit':
+            convertedTemp = `Celsius: ${(temperature - 32) * 5/9} °C | Kelvin: ${(temperature - 32) * 5/9 + 273.15} K`;
+            break;
+        case 'kelvin':
+            convertedTemp = `Celsius: ${temperature - 273.15} °C | Fahrenheit: ${(temperature - 273.15) * 9/5 + 32} °F`;
+            break;
+    }
+
+    output.textContent = convertedTemp;
+}
+
